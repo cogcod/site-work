@@ -1,520 +1,523 @@
-@import './utils';
+@import "./utils";
 
 // ---- 슬라이드 영역 ----
-#visual_slide{
+#visual_slide {
+  position: relative;
+
+  // 이전,다음버튼
+  > a {
+    display: block;
+    position: absolute;
+    top: 50%;
+    z-index: 40;
+    width: 22px;
+    height: 37px;
+    text-indent: -9999px;
+    transform: translateY(-50%);
+  }
+  .prev {
+    left: 106px;
+    background: url(../images/slide_prev.png) no-repeat;
+  }
+  .next {
+    right: 106px;
+    background: url(../images/slide_next.png) no-repeat;
+  }
+
+  // 시작,일시정지 / 페이징
+  .control {
+    .control_containter {
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      padding-right: 20px;
+      z-index: 40;
+      transform: translateX(-50%);
+
+      .controler {
+        a {
+          display: none;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          width: 11px;
+          height: 14px;
+          text-indent: -9999px;
+        }
+        .play {
+          // display: none;
+          background: url(../images/icon_play_M.png) no-repeat center;
+          background-size: contain;
+        }
+        .pause {
+          // display: none;
+          background: url(../images/slide_stop.png) no-repeat center;
+        }
+        .on {
+          display: block;
+        }
+      }
+
+      .pagination {
+        display: flex;
+
+        li {
+          a {
+            display: block;
+            width: 14px;
+            height: 14px;
+            text-indent: -9999px;
+            background-color: #999;
+            border-radius: 50%;
+          }
+
+          &:first-child {
+            margin-right: 10px;
+          }
+        }
+
+        .on {
+          a {
+            display: block;
+            width: 40px;
+            height: 14px;
+            background-color: $main_color;
+            border-radius: 14px;
+          }
+        }
+      }
+    }
+  }
+
+  .slide_container {
+    overflow: hidden;
     position: relative;
+    width: 100%;
+    height: 590px;
 
-    // 이전,다음버튼
-    >a{
-        display: block;
-        position: absolute;
-        top: 50%;
-        z-index: 40;
-        width: 22px;
-        height: 37px;
-        text-indent: -9999px;
-        transform: translateY(-50%);
-    }
-    .prev{
-        left: 106px;
-        background: url(/images/slide_prev.png) no-repeat;
-    }
-    .next{
-        right: 106px;
-        background: url(/images/slide_next.png) no-repeat;
-    }
+    ul.slides {
+      display: flex;
+      position: relative;
+      width: calc(100% * 2);
 
-    // 시작,일시정지 / 페이징
-    .control{
-        .control_containter{
-            position: absolute;
-            left: 50%;
-            bottom: 40px;
-            padding-right: 20px;
-            z-index: 40;
-            transform: translateX(-50%);
-
-            .controler{
-                a{
-                    display: none;
-                    position: absolute;
-                    right: 0;
-                    bottom: 0;
-                    width: 11px;
-                    height: 14px;
-                    text-indent: -9999px;
-                }
-                .play{
-                    // display: none;
-                    background: url(/images/icon_play_M.png) no-repeat center;
-                    background-size: contain;
-                }
-                .pause{
-                    // display: none;
-                    background: url(/images/slide_stop.png) no-repeat center;
-                }
-                .on{
-                    display: block;
-                }
-            }
-
-            .pagination{
-                display: flex;
-
-                li{
-                    a{
-                        display: block;
-                        width: 14px;
-                        height: 14px;
-                        text-indent: -9999px;
-                        background-color: #999;
-                        border-radius: 50%;
-                    }
-
-                    &:first-child{
-                        margin-right: 10px;
-                    }
-                }
-
-                .on{
-                    a{
-                        display: block;
-                        width: 40px;
-                        height: 14px;
-                        background-color: $main_color;
-                        border-radius: 14px;
-                    }
-                }
-            }
-        }
-    }
-
-    .slide_container{
-        overflow: hidden;
-        position: relative;
+      li {
         width: 100%;
-        height: 590px;
 
-        ul.slides{
-            display: flex;
-            position: relative;
-            width: calc(100% * 2);
-    
-            li{
-                width: 100%;
-                
-                a{
-                    overflow: hidden;
-                    display: block;
-                    position: relative;
-                    height: 590px;
+        a {
+          overflow: hidden;
+          display: block;
+          position: relative;
+          height: 590px;
 
-                    img{
-                        position: absolute;
-                        top: 0;
-                        left: 50%;
-                        max-width: 1920px;
-                        width: 1920px;
-                        height: 590px;
-                        transform: translateX(-50%);
-                    }
-                }
-            }
+          img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            max-width: 1920px;
+            width: 1920px;
+            height: 590px;
+            transform: translateX(-50%);
+          }
         }
+      }
     }
+  }
 }
 
 // ---- 매장찾기 ----
-#search_store{
-    position: relative;
-    width: 100%;
-    height: 163px;
-    background: url(/images/bg_sch.jpg);
+#search_store {
+  position: relative;
+  width: 100%;
+  height: 163px;
+  background: url(../images/bg_sch.jpg);
 
-    div{
-        display: flex;
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 619px;
-        transform: translate(-50%, -50%);
+  div {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 619px;
+    transform: translate(-50%, -50%);
 
-        p{
-            color: #fff;
-            font-weight: normal;
-            font-size: 30px;
-            line-height: 100%;
-        }
-
-        input{
-            margin: 0 10px 0 32px;
-            width: 440px;
-            height: 30px;
-            color: #fff;
-            font-size: 19px;
-            text-align: center;
-            text-indent: 0;
-            background-color: transparent;
-            border-bottom: 2px solid #fff;
-            
-            &::placeholder{
-                color: #cedff2;
-                font-size: 20px;
-            }
-        }
-
-        button{
-            width: 25px;
-            height: 25px;
-            cursor: pointer;
-            background: url(/images/icon_sch.png) no-repeat transparent;
-            background-color: transparent;
-        }
+    p {
+      color: #fff;
+      font-weight: normal;
+      font-size: 30px;
+      line-height: 100%;
     }
+
+    input {
+      margin: 0 10px 0 32px;
+      width: 440px;
+      height: 30px;
+      color: #fff;
+      font-size: 19px;
+      text-align: center;
+      text-indent: 0;
+      background-color: transparent;
+      border-bottom: 2px solid #fff;
+
+      &::placeholder {
+        color: #cedff2;
+        font-size: 20px;
+      }
+    }
+
+    button {
+      width: 25px;
+      height: 25px;
+      cursor: pointer;
+      background: url(../images/icon_sch.png) no-repeat transparent;
+      background-color: transparent;
+    }
+  }
 }
 
 // ---- 구인공고, 창업설명회 ----
-#job_area{
-    padding: 20px 0;
-    background-color: #f6f7fa;
-    
-    .job_images{
-        display: flex;
-        justify-content:center;
-        margin: 0 auto;
-        width: 1100px;
+#job_area {
+  padding: 20px 0;
+  background-color: #f6f7fa;
 
-        div{
-            margin: 0 5px;
-            width: 540px;
+  .job_images {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 1100px;
 
-            a{
-                img{
-                    display: block;
-                    max-width: 100%;
-                    height: auto;
-                }
-            }
+    div {
+      margin: 0 5px;
+      width: 540px;
+
+      a {
+        img {
+          display: block;
+          max-width: 100%;
+          height: auto;
         }
+      }
     }
+  }
 }
 
-
 // ---- 서비스 ----
-#service{
-    padding: 80px 0;
+#service {
+  padding: 80px 0;
 
-    >h2{
+  > h2 {
+    position: relative;
+    padding-bottom: 40px;
+    margin-bottom: 50px;
+    color: #000;
+    font-weight: normal;
+    font-size: 37px;
+    line-height: 100%;
+    text-align: center;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 74px;
+      width: 25px;
+      height: 7px;
+      background: url(../images/icon_h2_blue.png) no-repeat;
+      transform: translateX(-50%);
+    }
+  }
+
+  .service_container {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 1100px;
+
+    .service_left {
+      margin-right: 20px;
+
+      > a {
+        display: block;
         position: relative;
-        padding-bottom: 40px;
-        margin-bottom: 50px;
-        color: #000;
-        font-weight: normal;
-        font-size: 37px;
-        line-height: 100%;
-        text-align: center;
+        width: 740px;
+        height: auto;
 
-        &::after{
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 74px;
-            width: 25px;
-            height: 7px;
-            background: url(/images/icon_h2_blue.png) no-repeat;
-            transform: translateX(-50%);
+        &:first-child {
+          margin-bottom: 20px;
         }
+
+        > .text {
+          position: absolute;
+          left: 50px;
+          top: 45px;
+
+          h3 {
+            width: 78px;
+            height: 26px;
+            color: #fff;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 26px;
+            text-align: center;
+            background-color: $main_color;
+            border-radius: 26px;
+          }
+
+          p {
+            &:first-of-type {
+              margin: 13px 0 10px 0;
+              color: #000;
+              font-size: 26px;
+              line-height: 29px;
+              letter-spacing: -1px;
+            }
+            &:last-of-type {
+              color: #747474;
+              font-size: 14px;
+            }
+          }
+
+          span {
+            display: block;
+            margin-top: 70px;
+            color: #333;
+            font-size: 14px;
+            text-decoration: underline;
+          }
+        }
+
+        .thum {
+          img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+          }
+        }
+
+        &:last-child {
+          h3 {
+            width: 57px;
+          }
+        }
+      }
     }
 
-    .service_container{
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
-        width: 1100px;
-
-        .service_left{
-            margin-right: 20px;
-
-            >a{
-                display: block;
-                position: relative;
-                width: 740px;
-                height: auto;
-
-                &:first-child{
-                    margin-bottom: 20px;
-                }
-
-                >.text{
-                    position: absolute;
-                    left: 50px;
-                    top: 45px;
-
-                    h3{
-                        width: 78px;
-                        height: 26px;
-                        color: #fff;
-                        font-weight: normal;
-                        font-size: 12px;
-                        line-height: 26px;
-                        text-align: center;
-                        background-color: $main_color;
-                        border-radius: 26px;
-                    }
-
-                    p{
-                        &:first-of-type{
-                            margin: 13px 0 10px 0;
-                            color: #000;
-                            font-size: 26px;
-                            line-height: 29px;
-                            letter-spacing: -1px;
-                        }
-                        &:last-of-type{
-                            color: #747474;
-                            font-size: 14px;
-                        }
-                    }
-
-                    span{
-                        display: block;
-                        margin-top: 70px;
-                        color: #333;
-                        font-size: 14px;
-                        text-decoration: underline;
-                    }
-                }
-
-                .thum{
-                    img{
-                        display: block;
-                        max-width: 100%;
-                        height: auto;
-                    }
-                }
-
-                &:last-child{
-                    h3{
-                        width: 57px;
-                    }
-                }
-            }
+    .service_right {
+      a {
+        div {
+          img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+          }
         }
-
-        .service_right{
-            a{
-                div{
-                    img{
-                        display: block;
-                        max-width: 100%;
-                        height: auto;
-                    }
-                }
-            }
-        }
+      }
     }
+  }
 }
 
 // ---- 응원 메세지 ----
-#message{
-    position: relative;
+#message {
+  position: relative;
 
-    .msg_tit{
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        width: 1100px;
-        text-align: center;
-        transform: translate(-50%, -50%);
+  .msg_tit {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1100px;
+    text-align: center;
+    transform: translate(-50%, -50%);
 
-        p{
-            &:first-child{
-                margin-bottom: 21px;
-                color: #fff;
-                font-weight: bold;
-                font-size: 27px;
-                text-align: center;
-                line-height: 100%;
-            }
-
-            &:last-child{
-                color: #fff;
-                font-weight: 500;
-                font-size: 31px;
-                line-height: 100%;
-            }
-        }
-    }
-
-    .msg_img{
-        width: 100%;
-        height: 320px;
-        background: url(/images/story.jpg) no-repeat center;        
-    }
-}
-
-#franchise{
-    position: relative;
-    height: 730px;
-    background-color: #F6F7FA;
-
-    h2{
-        position: relative;
-        padding: 70px 0 40px;
-        margin-bottom: 50px;
-        color: #121212;
-        font-weight: normal;
-        font-size: 38px;
+    p {
+      &:first-child {
+        margin-bottom: 21px;
+        color: #fff;
+        font-weight: bold;
+        font-size: 27px;
         text-align: center;
         line-height: 100%;
-        letter-spacing: -1px;
+      }
 
-        &::after{
-            content: "";
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            width: 25px;
-            height: 7px;
-            background: url(/images/icon_h2_blue.png) no-repeat;
-            transform: translateX(-50%);
-        }
+      &:last-child {
+        color: #fff;
+        font-weight: 500;
+        font-size: 31px;
+        line-height: 100%;
+      }
     }
+  }
 
-    .franchise_container{
-        position: relative;
-        width: 1100px;
-        margin: 0 auto;
-
-        .frc_wrap{
-            display: flex;  
-            justify-content: space-around;
-
-            .frc_item{
-                display: inline-block;
-                margin-right: 20px;
-
-                &:last-child{
-                    margin: 0;
-                }
-
-                a{
-                    display: block;
-                    position: relative;
-                    width: 352px;
-                    height: auto;
-                    background-color: #fff;
-        
-                    .thum{
-                        height: 220px;
-        
-                        .thum_bg{
-                            display: none;
-                            width: 100%;
-                            height: 100%;
-                            background: linear-gradient(to bottom right, #5389c3, #5389c3 60%, #a2db9ca0 85%, #a2db9ca0);
-                            opacity:0.6;
-                        }
-                    }
-                    .thum_1{
-                        background: url(/images/thum01.jpg) no-repeat;
-                    }
-                    .thum_2{
-                        background: url(/images/thum02.jpg) no-repeat;
-                    }
-                    .thum_3{
-                        background: url(/images/thum03.jpg) no-repeat;
-                    }
-        
-                    h3{
-                        margin: 33px 0 65px 0;
-                        color: #121212;
-                        font-weight: normal;
-                        font-size: 22px;
-                        line-height: 33px;
-                        text-align: center;
-                        letter-spacing: -1px;
-                    }
-        
-                    p{
-                        padding-bottom: 40px;
-                        color: #333;
-                        font-size: 14px;
-                        text-align: center;
-                        text-decoration: underline;
-                    }
-        
-                    &:hover{
-                        background-color: #8ED585;
-        
-                        >h3,p{
-                            color: #fff;
-                        }
-                        .thum_bg{
-                            display: block;
-                        }
-                    }
-                }
-            }
-        }
-    }
+  .msg_img {
+    width: 100%;
+    height: 320px;
+    background: url(../images/story.jpg) no-repeat center;
+  }
 }
 
+#franchise {
+  position: relative;
+  height: 730px;
+  background-color: #f6f7fa;
+
+  h2 {
+    position: relative;
+    padding: 70px 0 40px;
+    margin-bottom: 50px;
+    color: #121212;
+    font-weight: normal;
+    font-size: 38px;
+    text-align: center;
+    line-height: 100%;
+    letter-spacing: -1px;
+
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      width: 25px;
+      height: 7px;
+      background: url(../images/icon_h2_blue.png) no-repeat;
+      transform: translateX(-50%);
+    }
+  }
+
+  .franchise_container {
+    position: relative;
+    width: 1100px;
+    margin: 0 auto;
+
+    .frc_wrap {
+      display: flex;
+      justify-content: space-around;
+
+      .frc_item {
+        display: inline-block;
+        margin-right: 20px;
+
+        &:last-child {
+          margin: 0;
+        }
+
+        a {
+          display: block;
+          position: relative;
+          width: 352px;
+          height: auto;
+          background-color: #fff;
+
+          .thum {
+            height: 220px;
+
+            .thum_bg {
+              display: none;
+              width: 100%;
+              height: 100%;
+              background: linear-gradient(
+                to bottom right,
+                #5389c3,
+                #5389c3 60%,
+                #a2db9ca0 85%,
+                #a2db9ca0
+              );
+              opacity: 0.6;
+            }
+          }
+          .thum_1 {
+            background: url(../images/thum01.jpg) no-repeat;
+          }
+          .thum_2 {
+            background: url(../images/thum02.jpg) no-repeat;
+          }
+          .thum_3 {
+            background: url(../images/thum03.jpg) no-repeat;
+          }
+
+          h3 {
+            margin: 33px 0 65px 0;
+            color: #121212;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 33px;
+            text-align: center;
+            letter-spacing: -1px;
+          }
+
+          p {
+            padding-bottom: 40px;
+            color: #333;
+            font-size: 14px;
+            text-align: center;
+            text-decoration: underline;
+          }
+
+          &:hover {
+            background-color: #8ed585;
+
+            > h3,
+            p {
+              color: #fff;
+            }
+            .thum_bg {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 // --- 미디어쿼리 : 메인페이지 ---
-@include desktop{
-    #job_area{  
-        padding: 20px;
-        
-        .job_images{
-            width: 100%;
-            div{
-                margin: 0 10px;
+@include desktop {
+  #job_area {
+    padding: 20px;
+
+    .job_images {
+      width: 100%;
+      div {
+        margin: 0 10px;
+      }
+    }
+  }
+
+  #service {
+    .service_container {
+      width: 100%;
+      padding: 0 20px;
+      box-sizing: border-box;
+
+      .service_left {
+        a {
+          width: 100%;
+          .text {
+            span {
+              margin-top: 5%;
             }
-        }
-    }
-
-    #service{
-        .service_container{
-            width: 100%;
-            padding: 0 20px;
-            box-sizing: border-box;
-
-            .service_left{
-                a{
-                    width: 100%;
-                    .text{
-                        span{
-                            margin-top: 5%;
-                        }
-                    }
-                    .thum{
-                        img{
-                            width: 100%;
-                        }
-                    }
-                }
+          }
+          .thum {
+            img {
+              width: 100%;
             }
+          }
         }
+      }
     }
+  }
 
-    #franchise{
-        overflow: hidden;
-        padding: 0 20px;
-        width: 100%;
-        box-sizing: border-box;
+  #franchise {
+    overflow: hidden;
+    padding: 0 20px;
+    width: 100%;
+    box-sizing: border-box;
 
-        .franchise_container{
-            overflow: hidden;
-            width: 100%;
-        }
+    .franchise_container {
+      overflow: hidden;
+      width: 100%;
     }
+  }
 }
 
-@include tablet{
+@include tablet {
+}
 
-};
-
-@include mobile{
-
-};
+@include mobile {
+} ;
