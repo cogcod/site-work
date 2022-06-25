@@ -1,0 +1,27 @@
+// Variables 
+$main_color: #2471C8;
+$list_line_bg: #eaeaea;
+
+$desktop: 1100px;
+$tablet: 768px;
+$mobile: 640px;
+
+
+// Mixin
+@mixin desktop {
+    @media (min-width: $tablet) and (max-width: $desktop){
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media (min-width: $mobile) and (max-width: $tablet){
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media (max-width: $mobile){
+        @content;
+    }
+}
