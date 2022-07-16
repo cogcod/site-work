@@ -1,0 +1,658 @@
+/* 모든 페이지 공통 : header , footer */
+@charset "utf-8";
+
+/** 메인(index) 전용 **/
+header.index{
+    padding: 0 30px 30px;
+}
+
+
+
+header{
+    padding: 0 30px 55px;
+    background: linear-gradient(to right, #042e6f, #042e6f 50%, #f2f2f2 50%, #f2f2f2);
+}
+
+/* 슬라이드 이미지 */
+header .visual img{
+    width: 100%;
+}
+
+/* 로고 */
+header h1{
+    position: absolute;
+    left: 30px;
+    top: 0;
+    z-index: 31;
+}
+
+/* 우측메뉴: 회원 */
+header > ul{
+    display: flex;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    z-index: 30;
+    width: 170px;
+    background-color: #f2f2f2;
+}
+
+header > ul li{
+    /* 부모의 영역을 똑같이 나눠갖는다. */
+    flex: 1;
+    padding-left: 18px;
+    line-height: 70px;
+}
+
+/* 가상의 인라인 요소를 주어 이미지 넣기 */
+header > ul li a::before{
+    content: "";
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    background: url(/images/icon.png) no-repeat;
+    /* 아이콘 세로정렬 */
+    vertical-align: middle;
+}
+
+header > ul li:first-child a::before{
+    background-position: 0 0;
+}
+
+header > ul li:last-child a::before{
+    background-position: -23px 0;
+}
+
+/* 대메뉴 */
+header #lnb{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    padding: 0 232px;
+    width: 100%;
+    /* padding을 줬는데 width를 100%로 주면 초과가 되기 때문에 */
+    box-sizing: border-box;
+}
+
+header #lnb nav{
+    /* 
+        z-index는 position 속성에서만 작동된다.!! 
+        absolute, fixed를 주면 ui가 일그러지기 때문에 relative로 주기!
+    */
+    position: relative;
+    z-index: 30;
+
+    /* ul이 inline-block이니까 부모한테 센터주기 */
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+    /* ul을 inline-block해놔서 밑에가 뜨기 때문에 */
+    font-size: 0;
+}
+
+header #lnb nav > ul{   
+    display: inline-block;
+    overflow: hidden;
+    height: 70px;
+}
+
+header #lnb nav > ul:hover{
+    overflow: visible;
+}
+
+header #lnb nav:hover + .submenu_background{
+    height: 330px;
+    opacity: 1;
+}
+
+header #lnb nav + .submenu_background{
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 29;
+
+    padding: 0 30px;
+    box-sizing: border-box;
+    /*  배경색을 어디에 넣을지 정하는 속성
+    content-bpx : 패딩을 제외한 내용 안쪽만 채워지도록 */
+    background-clip: content-box;
+
+    width: 100%;
+    height: 0;
+    opacity: 0;
+    background-color: #042e6f;
+    transition: all 0.5s;
+}
+
+header #lnb nav > ul > li{
+    /* li에 inline-block을 주고 ul에 center주면 가운데 정렬!!! */
+    display: inline-block;
+    position: relative;
+}
+
+    /* 
+        < 서브메뉴 만들기 >
+        1. ul/li로 가운데정렬 
+        2. a 요소에 가로세로 사이즈, 줄간격 주기 
+    */
+
+header #lnb nav > ul > li > a{
+    display: block;
+    position: relative;
+    width: 160px;
+    height: 69px;
+    font-size: 18px;
+    line-height: 69px;
+    color: #fff;
+}
+
+header #lnb nav > ul > li > a::after{
+    content: "";
+    position: absolute;
+    /* 가운데에서 펼쳐지기 공식 : left:50%에서 0으로 */
+    left: 50%;
+    bottom: -1px;
+    /* display:none 이 아니라, width로 제어 */
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    /* 초기상태에 transition 줘서 hover시 애니메이션 */
+    transition: all 0.5s;
+}
+
+/* a가 아닌 li에 hover를 해야 커서가 서브메뉴로 내려가도 li의 밑줄이 살아있다.!! */
+header #lnb nav > ul > li:hover > a:after{
+    left: 0;
+    width: 100%;
+}
+
+/* 서브메뉴 */
+header #lnb nav > ul ul{
+    /* display는 애니메이션이 되지 않으니 지워주자 */
+    /* display: none; */
+
+    /* 
+        - 밑으로 떨어뜨리기
+        - absolute를 주면 안에 있는 내용만큼 
+          가로 사이즈가 작아져서 ta-center가 안먹힌다.
+          그러면 width:100%를 이용해서 가로사이즈를 강제로 늘려줘야 된다.
+    */
+
+    position: absolute;
+    padding-top: 22px;
+    width: 100%;
+
+    /* ul의 높이를 줘야 마우스가 내려가도 안닫힌다. */
+    height: 230px;
+    text-align: center;
+
+    /* 
+        단순히 투명도만 주면 서브메뉴쪽에 커서가 가도 보이게된다.
+        그래서 대메뉴에 높이를 주고, overflow:hidden을 준다.
+    */
+    opacity: 0;
+    transition: all 0.5s;
+}
+
+header #lnb nav > ul:hover ul{
+    /* display: block; */
+    opacity: 1;
+}
+
+header #lnb nav > ul ul li{
+    /* 
+        서브메뉴 커서 
+        : 글씨에만 손가락모양으로 바뀌고 나머지 영역은 
+        일반 화살표로 표시하기 위해서는 
+        padding 또는 줄간격을 주면 된다. 
+    */
+    line-height: 39px;
+}
+
+header #lnb nav > ul ul a{
+    position: relative;
+    font-size: 14px;
+    color: #fff;
+    /* a요소 폰트색상변경 애니메이션 */
+    transition: all 0.5s;
+}
+
+header #lnb nav > ul ul a:hover{
+    color: #2acef1;
+}
+
+header #lnb nav > ul ul a:after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background-color: #2acef1;
+    transition: all 0.5s;
+}
+
+header #lnb nav > ul ul a:hover:after{
+    left: 0;
+    width: 100%;
+}
+
+/* 
+    <서브메뉴 열리게>
+    - 대메뉴 ul이 열렸을 때 그 안에 있는 서브 ul이 전부 열리게 하기 
+    - 대메뉴 ul이 블럭요소이면 글씨부분이 아닌 옆 부분에도 커서를 올리면 서브메뉴가 뜬다.
+
+    * 이렇게 CSS만 이용하여 마우스로 컨트롤하게 만들면 웹접근성에 좋지않다. 
+      JS를 활용하여 키보드이벤트로 서브메뉴 구현할 것
+*/
+
+
+
+/* --- footer --- */
+footer{
+    margin-top: 80px;
+    background-color: #272f3c;
+}
+
+footer > div{
+    position: relative;
+    width: 1175px;
+    margin: 0 auto;
+    padding: 45px 0;
+}
+
+footer > div > a{
+    position: absolute;
+    right: 0;
+    top: -25px;
+    width: 39px;
+    height: 49px;
+    color: transparent;
+    line-height: 49px;
+    text-align: center;
+    background: url(/images/icon.png) no-repeat -157px 8px #22a5d5;
+}
+
+footer > div .left{
+    /* float을 쓰면 부모의 높이가 사라져서, 부모에 clear 해줘야 한다.  */
+    float: left;
+    line-height: 100%;
+}
+
+footer > div .left div a{
+    margin-right: 10px;
+    color: #fff;
+    font-size: 13px;
+}
+
+footer > div .left p{
+    padding-top: 13px;
+    color: #747b85;
+    font-size: 13px;
+    line-height: 21px;
+}
+
+footer > div .left p span{
+    /* span은 인라인 요소라서 좌우로만 여백이 들어갈 수 있다. */
+    padding-right: 13px;
+}
+
+footer > div .right{
+    float: right;
+    position: relative;
+}
+
+footer > div .right select{
+    width: 134px;
+    height: 29px;
+    color: #fff;
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 29px;
+    text-indent: 20px;
+    /* 왜... 안되지? */
+    /* => Mac에서는 option에 설정한 스타일이 모든 브라우저에서 표현되지 않는다. */
+    /* 오직 윈도우에서의 IE,크롬,파이어폭스에서만 적용된것이 보임! */
+    /* 그래서 가급적 css로는 option 스타일을 적용하지 말고, jQuery나 js를 활용하여 변경한다. */
+    background-color: #272f3c;
+    border: none;
+    border-bottom: 1px solid #7d828a;
+
+    /* select 화살표 사라지게!!! */
+    /* 인터넷익스플로어 외 운영체제는 -webkit-접두사를 넣어 지원 */
+    appearance: none;
+    -webkit-appearance: none;
+}
+/* 인터넷익스플로어(IE) 지원 */
+footer > div .right select::-ms-expand{
+    display: none;
+}
+
+/* select에 이미지 넣으면 이상하게 들어가서? right에 주기 */
+footer > div .right:after{
+    /* 단점: after는 클릭하면 안열린다ㅠㅠ */
+    content: "";
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    margin-top: -3px;
+    width: 8px;
+    height: 6px;
+    background: url(/images/icon.png) no-repeat -221px -5px;
+}
+
+
+
+/* --- 서브페이지 --- */
+/* 본문사이즈 */
+.contents{
+    width: 1180px;
+    margin: 0 auto;
+}
+
+/* h2 서브메뉴 메인제목 */
+.h2{
+    position: relative;
+    padding: 55px 0 53px;
+    color: #222;
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 100%;
+    text-align: center;
+}
+
+.h2::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 50px;
+    height: 1px;
+    background-color: #aaa;
+    transform: translateX(-50%);
+}
+
+.h2 + p{
+    padding: 46px 0 54px;
+    color: #666;
+    font-size: 18px;
+    text-align: center;
+    line-height: 30px;
+}
+
+/* h3 */
+.h3{
+    margin: 50px 0;
+    font-size: 18px;
+    color: #222;
+}
+
+.h3::before{
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    width: 4px;
+    height: 4px;
+    font-weight: normal;
+    vertical-align: 5px;
+    background: #00a5e1;
+}
+
+/* 꼬리말 */
+.noti{
+    color: #888;
+    font-size: 14px;
+}
+
+.noti::before{
+    content: "";
+    display: inline-block;
+    margin-right: 3px;
+    width: 15px;
+    height: 15px;
+    background: url(/images/icon.png) no-repeat -336px -5px;
+    vertical-align: -3px;
+}
+
+/* 체크박스 : 원래의 input디자인을 날리고 label에 이미지를 넣어 새로 디자인해준다.*/
+/* type_1 : 약관동의 */
+input.type1{
+    position: absolute;
+    left: -4000%;
+}
+
+input.type1 + label{
+    font-size: 14px;
+    color: #222;
+    line-height: 27px;
+}
+
+input.type1 + label::before{
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    width: 27px;
+    height: 27px;
+    background: url(/images/icon.png) no-repeat -97px -60px;
+    vertical-align: middle;
+}
+
+input.type1:checked + label::before{
+    /* input이 체크되었을때 label의 디자인을 바꿔준다. */
+    background-position: -129px -60px;
+}
+
+/* type_2 : join3 회원정보입력 */
+input.type2{
+    position: absolute;
+    left: -4000%;
+}
+ 
+input.type2 + label{
+    padding-right: 35px;
+    font-size: 14px;
+    color: #222;
+    line-height: 27px;
+}
+
+input.type2 + label::before{
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    width: 12px;
+    height: 12px;
+    background: url(/images/icon.png) no-repeat -49px -60px;
+}
+
+/* input이 체크되었을때 label의 디자인을 바꿔준다. */
+input.type2:checked + label::before{
+    background-position: -66px -60px;
+}
+
+/* 청약현황 : 라디오버튼 */
+input[type="radio"]{
+    position: absolute;
+    left: -4000%;
+}
+ 
+input[type="radio"] + label{
+    padding-right: 35px;
+    font-size: 14px;
+    color: #222;
+    line-height: 27px;
+}
+
+input[type="radio"] + label::before{
+    content: "";
+    display: inline-block;
+    margin-right: 8px;
+    width: 14px;
+    height: 13px;
+    background: url(/images/icon.png) no-repeat -2px -60px;
+}
+
+input[type="radio"]:checked + label::before{
+    background-position: -20px -60px;
+}
+
+/* 버튼 */
+.btn_center{
+    text-align: center;
+}
+
+label + .btn_center{
+    padding-top: 65px;
+}
+
+.btn_type1{
+    /* 그냥 block 넣으면 본문 전체영역에 넣은 text-align:center가 안됨!! */
+    display: inline-block;
+    width: 120px;
+    height: 45px;
+    color: #fff;
+    font-size: 13px;
+    text-align: center;
+    line-height: 45px;
+    background-color: #042e6f;
+}
+
+.btn_type2{
+    display: inline-block;
+    width: 120px;
+    height: 45px;
+    color: #042e6f;
+    font-size: 13px;
+    text-align: center;
+    line-height: 45px;
+    background-color: #fff;
+    border: 1px solid #042e6f;
+    box-sizing: border-box;
+    vertical-align: -1px;
+    /* 만약, vertical이 안먹으면 자신에게 position:relative하고 top으로 움직이기 */
+}
+
+.btn_type3{
+    /* 글씨가 늘어나면 같이 늘어나는 버튼 => width 대신 min-width*/
+    display: inline-block;
+    min-width: 102px;
+    padding: 0 10px;
+    height: 38px;
+    color: rgb(133, 133, 133);
+    font-weight: 300;
+    line-height: 38px;
+    text-align: center;
+    border: 2px solid #aaa;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+/* 버튼 여백 */
+table + .btn_center{
+    padding-top: 50px;
+}
+
+/* 테이블 */
+table.type1{
+    border-top: 2px solid #042e6f;
+    border-bottom: 1px solid #999;
+}
+
+table.type1 th,
+table.type1 td{
+    /* input 상자의 높이를 높이로 지정하고, 그 위아래는 패딩을 줘야함!! */
+    height: 4px;
+    font-size: 13px;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+}
+
+table.type1 th:first-child{
+    border-left: none;
+}
+
+table.type1 tr:first-child th,
+table.type1 tr:first-child td{
+    border-top: none;
+}
+
+table.type1 th{
+    /* 행제목 : 텍스트 들여쓰기 (별표와 상관없이) */
+    padding: 10px 10px 10px 45px;
+    font-weight: normal;
+    color: #222;
+    text-align-last: left;
+}
+
+table.type1 th span{
+    /* text-indent 말고 overflow:hidden, color: transparent 하니까 별이 거의 가운데로 온다..! */
+    overflow: hidden;
+    display: inline-block;
+
+    /* span(별표)만 왼쪽으로 빼기 => margin-left: -8px; */
+    /* 별과 텍스트 사이의 여백을 6px 준다. 그럼 ml는 8+6=14px !! */
+    margin: 0 6px 0 -14px;
+
+    width: 8px;
+    height: 7px;
+    color: transparent;
+    background: url(/images/icon.png) no-repeat -534px -5px;
+    vertical-align: 2px;
+}
+
+table.type1 td{
+    /* 행내용 : 꽉찬 내용이 없을 경우 양쪽여백은 같은 값으로 줄것 */
+    padding: 10px 55px;
+    color: #777;
+}
+
+table.type1 .info::before{
+    content: "";
+    display: inline-block;
+    margin: 0 5px 0 13px;
+    width: 15px;
+    height: 14px;
+    background: url(/images/icon.png) no-repeat -336px -5px;
+    vertical-align:-2px;
+}
+
+table.type1 td > div{
+    /* div박스끼리 충돌 막기 : 아래 div에 padding */
+    padding: 10px 0 0;
+}
+
+table.type1 td > div:first-child{
+    padding: 0;
+}
+
+table.type1 td .btn_type3{
+    margin-left: 5px;
+}
+
+table.type1 td input{
+    /* 상자,텍스트 사이에 */
+    margin: 0 5px;
+}
+
+table.type1 td input:first-child{
+    /* 행의 맨 왼쪽(처음) 인풋박스의 왼쪽은 패딩과 충돌하지 않게 */
+    margin-left: 0;
+}
+
+/* 달력아이콘 */
+.cal{
+    position: relative;
+}
+.cal a{
+    display: inline-block;
+    position: absolute;
+    right: 100px;
+    top: 6px;
+    width: 24px;
+    height: 24px;
+    text-indent: -9999px;
+    background: url(/images/sub/ico_schedule.png) no-repeat;
+}
+
+    /* input > 높이, 보더, 폰트색 등은 default.css 에서 */
+    /* select는 안의 option값에 따라 자동으로 늘어나기 때문에 너비를 주지 않는다. */
