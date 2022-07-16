@@ -3,400 +3,406 @@
 @charset "utf-8";
 
 /* --- section --- */
-.info_box{
-    width: 1175px;
-    margin: 0 auto;
+.info_box {
+  width: 1175px;
+  margin: 0 auto;
 }
 
-.info_box h2{
-    padding: 58px 0 41px; 
-    font-size: 21px; 
-    font-weight: normal;
-    color: #777;
-    text-align: center;
-    /* 자간은 글자를 기준으로 우측으로 벌어지게 되어 
+.info_box h2 {
+  padding: 58px 0 41px;
+  font-size: 21px;
+  font-weight: normal;
+  color: #777;
+  text-align: center;
+  /* 자간은 글자를 기준으로 우측으로 벌어지게 되어 
     가운데 정렬이 안맞을 수 있다. 
     그래서 왼쪽으로 여백을 주어 맞춰준다.  */
-    letter-spacing: 36px;
-    padding-left: 27px;
-} 
-
-.info_box h2 span{
-    color: #042e6f;
+  letter-spacing: 36px;
+  padding-left: 27px;
 }
 
-.info_box ul{
-    display: flex;
-    justify-content: space-between;
+.info_box h2 span {
+  color: #042e6f;
 }
 
-.info_box li{
-    position: relative;
-    width: 260px;
+.info_box ul {
+  display: flex;
+  justify-content: space-between;
 }
 
-.info_box li em{
-    overflow: hidden;
-    display: block;
-    width: 100%;
-    height: 170px;
+.info_box li {
+  position: relative;
+  width: 260px;
 }
 
-.info_box li img{
-    width: 100%;
-    height: 170px;
-    transform: scale(1);
-    transition: all 0.3s;
+.info_box li em {
+  overflow: hidden;
+  display: block;
+  width: 100%;
+  height: 170px;
 }
 
-.info_box li:hover img{
-    /* 확대축소는 scale로!!  */
-    transform: scale(1.2);
+.info_box li img {
+  width: 100%;
+  height: 170px;
+  transform: scale(1);
+  transition: all 0.3s;
 }
 
-.info_box li a > div{
-    padding: 40px 20px 0;
-    height: 170px;
-    transition: all 0.3s;
+.info_box li:hover img {
+  /* 확대축소는 scale로!!  */
+  transform: scale(1.2);
 }
 
-.info_box li a h3{
-    font-size: 19px;
-    color: #222;
-    font-weight: normal;
-    line-height: 28px;
+.info_box li a > div {
+  padding: 40px 20px 0;
+  height: 170px;
+  transition: all 0.3s;
 }
 
-    /* 실무에서는 스포이드로 컬러 찍으면 절대 안된다. 
+.info_box li a h3 {
+  font-size: 19px;
+  color: #222;
+  font-weight: normal;
+  line-height: 28px;
+}
+
+/* 실무에서는 스포이드로 컬러 찍으면 절대 안된다. 
     포토샵의 타입툴에 적용되어있는 컬러를 가져와야 한다. */
-.info_box li a p{
-    padding: 13px 0 0;
-    font-size: 13px;
-    color: #747774;
-    line-height: 18px;
+.info_box li a p {
+  padding: 13px 0 0;
+  font-size: 13px;
+  color: #747774;
+  line-height: 18px;
 }
 
-.info_box li a > div{
-    padding: 40px 20px 0;
-    /* padding을 뺀 나머지 높이*/
-    height: 170px;
+.info_box li a > div {
+  padding: 40px 20px 0;
+  /* padding을 뺀 나머지 높이*/
+  height: 170px;
 
-    /* 멀티백그라운드~! */
-    background: url(/images/sales_obj01.png) no-repeat -260px -240px,
-                url(/images/sales_obj02.png) no-repeat -309px 180px,
-                url(/images/sales_obj03.png) no-repeat 204px 210px;
-        /* 개발자도구에서 완성된 위치 먼저 잡아주기
+  /* 멀티백그라운드~! */
+  background: url(../images/sales_obj01.png) no-repeat -260px -240px,
+    url(../images/sales_obj02.png) no-repeat -309px 180px,
+    url(../images/sales_obj03.png) no-repeat 204px 210px;
+  /* 개발자도구에서 완성된 위치 먼저 잡아주기
         (shift + 화살표키 = 10px씩 증감 */
-}   
+}
 
-.info_box li:hover a > div{
-    background-position: -180px -160px, -229px 120px, 104px 130px;
-    background-color: #aaa8aa;
+.info_box li:hover a > div {
+  background-position: -180px -160px, -229px 120px, 104px 130px;
+  background-color: #aaa8aa;
 }
 
 .info_box li:hover a * {
-    color: #fff;
+  color: #fff;
 }
 
-.info_box li a > div div{
-    position: absolute;
-    left: 20px;
-    bottom: 0;
-    width: 220px;
-    height: 54px; 
-    color: #666;
-    font-size: 13px;
-    line-height: 54px;
-    text-align: right;
-    border-top: 1px solid #ccc;
+.info_box li a > div div {
+  position: absolute;
+  left: 20px;
+  bottom: 0;
+  width: 220px;
+  height: 54px;
+  color: #666;
+  font-size: 13px;
+  line-height: 54px;
+  text-align: right;
+  border-top: 1px solid #ccc;
 }
 
 /* 스프라이트 이미지 넣을때는 after,before가 편리함 */
-.info_box li a > div div::after{
-    content: "";
-    display: inline-block;
-    margin-left: 6px;
-    width: 22px;
-    height: 12px;
-    background: url(/images/icon.png) no-repeat -60px -25px;
+.info_box li a > div div::after {
+  content: "";
+  display: inline-block;
+  margin-left: 6px;
+  width: 22px;
+  height: 12px;
+  background: url(../images/icon.png) no-repeat -60px -25px;
 }
 
-.info_box li:hover a > div div::after{
-    background-position: -60px -5px;
+.info_box li:hover a > div div::after {
+  background-position: -60px -5px;
 }
 
-.info_box li a .ico{
-    /* absolute가 되면 자동으로 block이 되기때문에 
+.info_box li a .ico {
+  /* absolute가 되면 자동으로 block이 되기때문에 
     따로 주지 않아도 된다. */
-    position: absolute;
-    left: 20px;
-    top: 137px;
-    width: 65px;
-    height: 65px;
-    color: #fff;
-    font-size: 13px;
-    text-align: center;
-    line-height: 65px;
+  position: absolute;
+  left: 20px;
+  top: 137px;
+  width: 65px;
+  height: 65px;
+  color: #fff;
+  font-size: 13px;
+  text-align: center;
+  line-height: 65px;
 }
 
-.info_box li a .ico.no1{
-    background-color: #94c83d;
+.info_box li a .ico.no1 {
+  background-color: #94c83d;
 }
 
-.info_box li a .ico.no2{
-    background-color: #042e6f;
+.info_box li a .ico.no2 {
+  background-color: #042e6f;
 }
 
 /* 인포박스의 ul다음 어떤 형제가 오든지 여백주기 */
 .info_box > ul + * {
-    padding-top: 30px;
+  padding-top: 30px;
 }
 
 /* 더보기 버튼 */
-.btn_more{
-    display: inline-block;
-    width: 140px;   
-    height: 44px;
-    color: #042e6f;
-    font-size: 16px;
-    line-height: 44px;
-    text-align: center;
-    letter-spacing: 7px;
-    border: 1px solid #042e6f;
-    box-sizing: border-box;
+.btn_more {
+  display: inline-block;
+  width: 140px;
+  height: 44px;
+  color: #042e6f;
+  font-size: 16px;
+  line-height: 44px;
+  text-align: center;
+  letter-spacing: 7px;
+  border: 1px solid #042e6f;
+  box-sizing: border-box;
 }
 
-.btn_more::after{
-    content: "";
-    display: inline-block;
-    margin-left: 8px;
-    width: 12px;
-    height: 12px;
-    background: url(/images/icon.png) no-repeat -196px -5px;
+.btn_more::after {
+  content: "";
+  display: inline-block;
+  margin-left: 8px;
+  width: 12px;
+  height: 12px;
+  background: url(../images/icon.png) no-repeat -196px -5px;
 }
 
-.btns.center{
-    text-align: center;
+.btns.center {
+  text-align: center;
 }
 
 /* --- 고객 가이드 --- */
-.guide_box{
-    display: flex;
-    width: 1175px;
-    margin: 60px auto 55px;
+.guide_box {
+  display: flex;
+  width: 1175px;
+  margin: 60px auto 55px;
 }
 
-.guide_box .guide{
-    display: flex;
+.guide_box .guide {
+  display: flex;
 }
 
-.guide_box .guide h2{
-    margin-right: 43px;
-    color: #000;
-    font-size: 30px;
-    line-height: 40px;
-    font-weight: normal;
+.guide_box .guide h2 {
+  margin-right: 43px;
+  color: #000;
+  font-size: 30px;
+  line-height: 40px;
+  font-weight: normal;
 }
 
-.guide_box .guide ul{
-    display: flex;
+.guide_box .guide ul {
+  display: flex;
 }
 
-.guide_box .guide ul li{
-    margin-right: 50px;
+.guide_box .guide ul li {
+  margin-right: 50px;
 }
 
-.guide_box .guide ul li a{
-    display: inline-block;
-    padding-top: 70px;
-    color: #002870;
-    font-size: 15px;
-    text-align: center;
+.guide_box .guide ul li a {
+  display: inline-block;
+  padding-top: 70px;
+  color: #002870;
+  font-size: 15px;
+  text-align: center;
 }
 
-.guide_box .guide ul li:nth-child(1) a{background: url(/images/ico_main_util01.png) no-repeat top;}
-.guide_box .guide ul li:nth-child(2) a{background: url(/images/ico_main_util02.png) no-repeat top; width: 56px;}
-.guide_box .guide ul li:nth-child(3) a{background: url(/images/ico_main_util03.png) no-repeat top;}
-.guide_box .guide ul li:nth-child(4) a{background: url(/images/ico_main_util04.png) no-repeat top;}
+.guide_box .guide ul li:nth-child(1) a {
+  background: url(../images/ico_main_util01.png) no-repeat top;
+}
+.guide_box .guide ul li:nth-child(2) a {
+  background: url(../images/ico_main_util02.png) no-repeat top;
+  width: 56px;
+}
+.guide_box .guide ul li:nth-child(3) a {
+  background: url(../images/ico_main_util03.png) no-repeat top;
+}
+.guide_box .guide ul li:nth-child(4) a {
+  background: url(../images/ico_main_util04.png) no-repeat top;
+}
 
 /* --- 문의전화 --- */
-.guide_box .phone{
-    display: flex;
-    position: relative;
-    padding-left: 55px;
+.guide_box .phone {
+  display: flex;
+  position: relative;
+  padding-left: 55px;
 }
 
-.guide_box .phone::after{
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 80px;
-    background-color: #666;
+.guide_box .phone::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 80px;
+  background-color: #666;
 }
 
-.guide_box .phone h2{
-    color: #777;
-    font-weight: normal;
-    font-size: 15px;
+.guide_box .phone h2 {
+  color: #777;
+  font-weight: normal;
+  font-size: 15px;
 }
 
 /* 컨텐츠가 유동적으로 바뀌는 부분은 nth를 쓰면 안됨! */
-.guide_box .phone > div:first-child span{   
-    color: #042e6f;
-    font-size: 25px;
+.guide_box .phone > div:first-child span {
+  color: #042e6f;
+  font-size: 25px;
 }
 
-.guide_box .phone > div:last-child{
-    position: relative;
-    top: 3px;
-    padding-left: 55px;
-    color: #777;
-    font-weight: normal;
-    font-size: 15px;
-    line-height: 100%;
-} 
+.guide_box .phone > div:last-child {
+  position: relative;
+  top: 3px;
+  padding-left: 55px;
+  color: #777;
+  font-weight: normal;
+  font-size: 15px;
+  line-height: 100%;
+}
 
 .guide_box .phone > div:last-child h2,
-.guide_box .phone > div:last-child p{
-    float: left;
+.guide_box .phone > div:last-child p {
+  float: left;
 }
 
-.guide_box .phone > div:last-child p{
-    margin-left: 25px;
+.guide_box .phone > div:last-child p {
+  margin-left: 25px;
 }
 
-.guide_box .phone > div:last-child div{
-    clear: both;
-    padding-top: 15px;
+.guide_box .phone > div:last-child div {
+  clear: both;
+  padding-top: 15px;
 }
-
 
 /* --- 뉴스 --- */
-.news{
-    background-color: #f4f5f9;
+.news {
+  background-color: #f4f5f9;
 }
 
-.news > div{
-    display: flex;
-    width: 1175px;
-    margin: 0 auto;
-    padding: 50px 0;
+.news > div {
+  display: flex;
+  width: 1175px;
+  margin: 0 auto;
+  padding: 50px 0;
 }
 
-.news h2{
-    width: 95px;
-    height: 95px;
-    color: #fff;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 95px;
-    text-align: center;
-    background-color: #042e6f;
+.news h2 {
+  width: 95px;
+  height: 95px;
+  color: #fff;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 95px;
+  text-align: center;
+  background-color: #042e6f;
 }
 
-.news > div ul{
-    display: flex;
-    padding-left: 15px;
+.news > div ul {
+  display: flex;
+  padding-left: 15px;
 }
 
-.news > div ul li{
-padding-left: 45px;
+.news > div ul li {
+  padding-left: 45px;
 }
 
-.news > div ul li a{
-    display: block;
-    /* 줄긋기 애니메이션하기위해 relative되어있어야 함 */
-    position: relative;
-    padding: 35px 30px 0;
-    width: 310px;
-    height: 260px;
-    background-color: #fff;
-    box-sizing: border-box;
+.news > div ul li a {
+  display: block;
+  /* 줄긋기 애니메이션하기위해 relative되어있어야 함 */
+  position: relative;
+  padding: 35px 30px 0;
+  width: 310px;
+  height: 260px;
+  background-color: #fff;
+  box-sizing: border-box;
 }
 
-.news li a h3{
-    color: #222;
-    font-weight: normal;
-    font-size: 24px;
-    line-height: 36px;
+.news li a h3 {
+  color: #222;
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 36px;
 }
 
-.news li a p{
-    padding: 22px 0 20px;
-    color: #666;
-    font-size: 14px;
+.news li a p {
+  padding: 22px 0 20px;
+  color: #666;
+  font-size: 14px;
 }
 
-.news li a span{
-    color: #666;
-    font-size: 12px;
+.news li a span {
+  color: #666;
+  font-size: 12px;
 }
 
 /* 줄긋기 애니메이션 : absolute하고 선 하나씩 그려주기 */
-.news li a em{
-    position: absolute;
-    background-color: #606060;
-    transition: all 0.2s;
-    opacity: 0;
+.news li a em {
+  position: absolute;
+  background-color: #606060;
+  transition: all 0.2s;
+  opacity: 0;
 }
 
-    /* 윗선 */
-.news li a em:nth-of-type(1){
-    left: 0;
-    top: 0;
-    width: 0%;
-    height: 1px;
+/* 윗선 */
+.news li a em:nth-of-type(1) {
+  left: 0;
+  top: 0;
+  width: 0%;
+  height: 1px;
 }
 
-    /* 왼쪽선 */
-.news li a em:nth-of-type(2){
-    left: 0;
-    top: 0;
-    width: 1px;
-    height: 0%;
+/* 왼쪽선 */
+.news li a em:nth-of-type(2) {
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 0%;
 }
 
-    /* 오른쪽선 */
-.news li a em:nth-of-type(3){
-    right: 0;
-    bottom: 0;
-    width: 1px;
-    height: 0%;
+/* 오른쪽선 */
+.news li a em:nth-of-type(3) {
+  right: 0;
+  bottom: 0;
+  width: 1px;
+  height: 0%;
 }
 
-    /* 아래선 */
-.news li a em:nth-of-type(4){
-    right: 0;
-    bottom: 0;
-    width: 0%;
-    height: 1px;
+/* 아래선 */
+.news li a em:nth-of-type(4) {
+  right: 0;
+  bottom: 0;
+  width: 0%;
+  height: 1px;
 }
 
 /* hover했을 때~! */
-    /* 윗선 */
-.news li a:hover em:nth-of-type(1){
-    width: 100%;
+/* 윗선 */
+.news li a:hover em:nth-of-type(1) {
+  width: 100%;
 }
 
-    /* 왼쪽선 */
-.news li a:hover em:nth-of-type(2){
-    height: 100%;
+/* 왼쪽선 */
+.news li a:hover em:nth-of-type(2) {
+  height: 100%;
 }
 
-    /* 오른쪽선 */
-.news li a:hover em:nth-of-type(3){
-    height: 100%;
+/* 오른쪽선 */
+.news li a:hover em:nth-of-type(3) {
+  height: 100%;
 }
 
-    /* 아래선 */
-.news li a:hover em:nth-of-type(4){
-    width: 100%;
+/* 아래선 */
+.news li a:hover em:nth-of-type(4) {
+  width: 100%;
 }
 
-.news li a:hover em{
-    opacity: 1;
+.news li a:hover em {
+  opacity: 1;
 }
-
-
